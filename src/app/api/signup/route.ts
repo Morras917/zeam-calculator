@@ -5,6 +5,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
+    // 1. Save to Supabase
     const supabase = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.SUPABASE_SERVICE_ROLE_KEY!
@@ -26,7 +27,33 @@ export async function POST(request: Request) {
 
     if (error) {
       console.error('Supabase insert error:', error);
-      return NextResponse.json({ error: 'Failed to save' }, { status: 500 });
+    }
+
+    // 2. Append to Google Sheet via Apps Script web app
+    const sheetUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
+    if (sheetUrl) {
+      try {
+        await fetch(sheetUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            timestamp: new Date().toISOString(),
+            contact_name: body.contact_name || '',
+            phone_number: body.phone_number || '',
+            shop_name: body.shop_name || '',
+            currency: body.currency || '',
+            monthly_airtime: body.monthly_airtime || 0,
+            monthly_vouchers: body.monthly_vouchers || 0,
+            monthly_remittance: body.monthly_remittance || 0,
+            monthly_qr_sales: body.monthly_qr_sales || 0,
+            referrals: body.referrals || 0,
+            monthly_earnings: body.monthly_earnings || 0,
+            annual_earnings: body.annual_earnings || 0,
+          }),
+        });
+      } catch (sheetErr) {
+        console.error('Google Sheets append error:', sheetErr);
+      }
     }
 
     return NextResponse.json({ success: true });
