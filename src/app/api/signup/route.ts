@@ -37,18 +37,9 @@ export async function POST(request: Request) {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            timestamp: new Date().toISOString(),
             contact_name: body.contact_name || '',
             phone_number: body.phone_number || '',
             shop_name: body.shop_name || '',
-            currency: body.currency || '',
-            monthly_airtime: body.monthly_airtime || 0,
-            monthly_vouchers: body.monthly_vouchers || 0,
-            monthly_remittance: body.monthly_remittance || 0,
-            monthly_qr_sales: body.monthly_qr_sales || 0,
-            referrals: body.referrals || 0,
-            monthly_earnings: body.monthly_earnings || 0,
-            annual_earnings: body.annual_earnings || 0,
           }),
         });
       } catch (sheetErr) {
