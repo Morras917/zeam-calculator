@@ -13,10 +13,10 @@ export async function POST(request: Request) {
     const { error } = await supabase.from('merchant_leads').insert({
       shop_name: body.shop_name || null,
       currency: body.currency,
-      customers_per_day: body.customers_per_day,
-      avg_transaction: body.avg_transaction,
       monthly_airtime: body.monthly_airtime,
-      monthly_electricity: body.monthly_electricity,
+      monthly_vouchers: body.monthly_vouchers,
+      monthly_remittance: body.monthly_remittance,
+      monthly_qr_sales: body.monthly_qr_sales,
       referrals: body.referrals,
       monthly_earnings: body.monthly_earnings,
       annual_earnings: body.annual_earnings,
