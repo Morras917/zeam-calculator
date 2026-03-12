@@ -377,7 +377,7 @@ export default function Calculator() {
             {/* CTAs */}
             <div className="cta-grid">
               <button className="btn-secondary" onClick={showInputs}>← Adjust numbers</button>
-              <button className="btn-primary" style={{ padding: '14px' }} onClick={showSignup}>Sign me up! 🚀</button>
+              <button className="btn-primary" style={{ padding: '14px' }} onClick={() => window.open('https://www.zeam.money/zeam-downloads', '_blank')}>Sign me up! 🚀</button>
             </div>
             <div className="disclaimer">
               Estimates based on standard Zeam merchant commission rates (1.5% on all transactions, {sym}40 per sign-on).
