@@ -2,7 +2,7 @@
 body { background: #f4f6fb; min-height: 100vh; }
 
 .header {
-  background: linear-gradient(135deg, #1A2332 0%, #0F2040 100%);
+  background: linear-gradient(135deg, #7B22CC 0%, #6518B8 100%);
   padding: 16px 22px;
   display: flex; align-items: center; justify-content: space-between;
   position: sticky; top: 0; z-index: 100;
@@ -10,12 +10,12 @@ body { background: #f4f6fb; min-height: 100vh; }
 .logo-wrap { display: flex; align-items: center; gap: 12px; }
 .logo-icon {
   width: 38px; height: 38px; border-radius: 10px;
-  background: linear-gradient(135deg, #00B4D8, #06D6A0);
+  background: linear-gradient(135deg, #FACC15, #F0B429);
   display: flex; align-items: center; justify-content: center;
-  font-weight: 900; font-size: 16px; color: #fff;
+  font-weight: 900; font-size: 16px; color: #1a1a2e;
 }
 .logo-name { font-weight: 900; font-size: 15px; color: #fff; letter-spacing: 0.3px; }
-.logo-sub { font-size: 10px; color: #7ecfea; letter-spacing: 1px; }
+.logo-sub { font-size: 10px; color: rgba(255,255,255,0.7); letter-spacing: 1px; }
 .currency-btns { display: flex; gap: 6px; }
 .cur-btn {
   padding: 5px 10px; border-radius: 20px; border: none;
@@ -23,13 +23,13 @@ body { background: #f4f6fb; min-height: 100vh; }
   font-family: inherit; transition: all 0.2s;
   background: #ffffff22; color: #fff;
 }
-.cur-btn.active { background: #FFD166; color: #1a1a2e; }
+.cur-btn.active { background: #FACC15; color: #1a1a2e; }
 
 .container { max-width: 480px; margin: 0 auto; padding: 20px 16px 60px; }
 
 .intro { text-align: center; margin-bottom: 24px; padding: 0 8px; }
 .intro h1 { font-size: 26px; font-weight: 900; color: #1A2332; line-height: 1.2; margin-bottom: 8px; }
-.intro h1 span { color: #00B4D8; }
+.intro h1 span { color: #8B2BE2; }
 .intro p { font-size: 13px; color: #777; line-height: 1.5; }
 
 .card {
@@ -72,21 +72,21 @@ input[type=range] {
   outline: none; font-family: inherit; background: #fafbff;
   transition: border-color 0.2s;
 }
-.shop-input:focus { border-color: #00B4D8; }
+.shop-input:focus { border-color: #8B2BE2; }
 
 .live-strip {
-  background: linear-gradient(135deg, #1A2332, #0F2040);
+  background: linear-gradient(135deg, #7B22CC, #6518B8);
   border-radius: 16px; padding: 18px 20px; margin-bottom: 24px;
   display: flex; align-items: center; justify-content: space-between;
 }
-.live-label { font-size: 11px; color: #7ecfea; letter-spacing: 1px; text-transform: uppercase; }
-.live-amount { font-size: 36px; font-weight: 900; color: #FFD166; letter-spacing: -1px; line-height: 1; }
+.live-label { font-size: 11px; color: rgba(255,255,255,0.7); letter-spacing: 1px; text-transform: uppercase; }
+.live-amount { font-size: 36px; font-weight: 900; color: #FACC15; letter-spacing: -1px; line-height: 1; }
 .btn-primary {
-  background: linear-gradient(135deg, #00B4D8, #06D6A0);
+  background: linear-gradient(135deg, #FACC15, #F0B429);
   border: none; border-radius: 12px; padding: 14px 20px;
-  color: #fff; font-size: 13px; font-weight: 800;
+  color: #1a1a2e; font-size: 13px; font-weight: 800;
   cursor: pointer; font-family: inherit;
-  box-shadow: 0 4px 16px #00B4D844; line-height: 1.4; text-align: center;
+  box-shadow: 0 4px 16px #FACC1544; line-height: 1.4; text-align: center;
   transition: opacity 0.2s;
 }
 .btn-primary:hover { opacity: 0.9; }
@@ -102,12 +102,12 @@ input[type=range] {
 .results-intro { margin-bottom: 20px; }
 .results-intro .sub { font-size: 14px; color: #777; margin-bottom: 4px; }
 .results-intro h2 { font-size: 22px; font-weight: 900; color: #1A2332; line-height: 1.2; }
-.results-intro h2 span { color: #00B4D8; }
+.results-intro h2 span { color: #8B2BE2; }
 
 .total-card {
-  background: linear-gradient(135deg, #1A2332 0%, #152640 60%, #0F2040 100%);
+  background: linear-gradient(135deg, #7B22CC 0%, #6518B8 60%, #5510A0 100%);
   border-radius: 20px; padding: 28px 24px; text-align: center;
-  box-shadow: 0 20px 60px #1A233244; position: relative; overflow: hidden;
+  box-shadow: 0 20px 60px #7B22CC44; position: relative; overflow: hidden;
   margin-bottom: 14px;
 }
 .total-card::before {
@@ -118,19 +118,19 @@ input[type=range] {
   content: ''; position: absolute; top: -20px; right: -20px;
   width: 100px; height: 100px; border-radius: 50%; border: 1px solid #ffffff18;
 }
-.total-label { font-size: 11px; color: #7ecfea; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
-.total-amount { font-size: 52px; font-weight: 900; color: #FFD166; letter-spacing: -2px; line-height: 1; }
-.total-sub { font-size: 12px; color: #7ecfea; margin-top: 8px; }
+.total-label { font-size: 11px; color: rgba(255,255,255,0.75); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+.total-amount { font-size: 52px; font-weight: 900; color: #FACC15; letter-spacing: -2px; line-height: 1; }
+.total-sub { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 8px; }
 
 .annual-card {
-  background: linear-gradient(135deg, #06D6A0, #00B4D8);
+  background: linear-gradient(135deg, #FACC15, #F0B429);
   border-radius: 16px; padding: 18px 20px; margin-bottom: 16px;
   display: flex; align-items: center; justify-content: space-between;
-  box-shadow: 0 8px 30px #06D6A033;
+  box-shadow: 0 8px 30px #FACC1533;
 }
-.annual-label { font-size: 11px; color: #fff; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; opacity: 0.85; }
-.annual-amount { font-size: 32px; font-weight: 900; color: #fff; letter-spacing: -1px; }
-.annual-sub { font-size: 11px; color: #fff; opacity: 0.75; margin-top: 2px; }
+.annual-label { font-size: 11px; color: #1a1a2e; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; opacity: 0.75; }
+.annual-amount { font-size: 32px; font-weight: 900; color: #1a1a2e; letter-spacing: -1px; }
+.annual-sub { font-size: 11px; color: #1a1a2e; opacity: 0.65; margin-top: 2px; }
 .annual-icon { font-size: 48px; opacity: 0.4; }
 
 .breakdown-card { background: #fff; border-radius: 18px; padding: 20px; box-shadow: 0 2px 20px #1a1a2e11; margin-bottom: 16px; }
@@ -146,7 +146,7 @@ input[type=range] {
 
 .total-row { border-top: 1.5px solid #f0f2f7; margin-top: 14px; padding-top: 14px; display: flex; justify-content: space-between; align-items: center; }
 .total-row-label { font-size: 14px; font-weight: 800; color: #1A2332; }
-.total-row-value { font-size: 24px; font-weight: 900; color: #00B4D8; }
+.total-row-value { font-size: 24px; font-weight: 900; color: #8B2BE2; }
 
 .tier-card { background: #fff; border-radius: 18px; padding: 20px; box-shadow: 0 2px 20px #1a1a2e11; margin-bottom: 16px; }
 .tier-item {
@@ -165,14 +165,14 @@ input[type=range] {
 .tier-hint { background: #fff8e8; border-radius: 10px; padding: 10px 14px; margin-top: 8px; font-size: 12px; color: #b8860b; font-weight: 600; }
 
 .real-life-card {
-  background: linear-gradient(135deg, #0F2040, #1A2332);
+  background: linear-gradient(135deg, #5510A0, #7B22CC);
   border-radius: 18px; padding: 20px; margin-bottom: 20px;
 }
-.real-life-title { font-size: 13px; font-weight: 800; color: #7ecfea; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+.real-life-title { font-size: 13px; font-weight: 800; color: rgba(255,255,255,0.85); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
 .real-life-item { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
 .real-life-emoji { font-size: 22px; flex-shrink: 0; }
 .real-life-text-title { font-size: 13px; font-weight: 700; color: #fff; }
-.real-life-text-desc { font-size: 11px; color: #7ecfea; line-height: 1.4; margin-top: 2px; }
+.real-life-text-desc { font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.4; margin-top: 2px; }
 
 .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
 .disclaimer { text-align: center; font-size: 10px; color: #aaa; line-height: 1.5; }
@@ -191,7 +191,7 @@ input[type=range] {
   text-align: center; padding: 12px 16px; border-radius: 12px;
   font-size: 13px; font-weight: 600; margin-top: 12px;
 }
-.signup-toast.success { background: #eefff8; color: #06D6A0; }
+.signup-toast.success { background: #f3e8ff; color: #8B2BE2; }
 .signup-toast.error { background: #fff0f0; color: #EF476F; }
 
 @keyframes countUp {
