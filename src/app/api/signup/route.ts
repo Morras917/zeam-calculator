@@ -11,6 +11,8 @@ export async function POST(request: Request) {
     );
 
     const { error } = await supabase.from('merchant_leads').insert({
+      contact_name: body.contact_name,
+      phone_number: body.phone_number,
       shop_name: body.shop_name || null,
       currency: body.currency,
       monthly_airtime: body.monthly_airtime,

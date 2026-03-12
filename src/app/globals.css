@@ -180,9 +180,16 @@ input[type=range] {
 .page { display: none; }
 .page.active { display: block; }
 
+.form-group { margin-bottom: 14px; }
+.form-label { font-size: 12px; font-weight: 700; color: #1A2332; margin-bottom: 6px; display: block; }
+.signup-submit {
+  width: 100%; margin-top: 8px; padding: 16px !important;
+  font-size: 15px !important;
+}
+
 .signup-toast {
   text-align: center; padding: 12px 16px; border-radius: 12px;
-  font-size: 13px; font-weight: 600; margin-bottom: 12px;
+  font-size: 13px; font-weight: 600; margin-top: 12px;
 }
 .signup-toast.success { background: #eefff8; color: #06D6A0; }
 .signup-toast.error { background: #fff0f0; color: #EF476F; }

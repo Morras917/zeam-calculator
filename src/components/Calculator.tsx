@@ -83,9 +83,11 @@ type StreamKey = typeof STREAMS[number]['key'];
 
 // ── Main ──
 export default function Calculator() {
-  const [page, setPage] = useState<'inputs' | 'results'>('inputs');
+  const [page, setPage] = useState<'inputs' | 'results' | 'signup'>('inputs');
   const [currency, setCurrency] = useState(CURRENCIES[0]);
   const [shopName, setShopName] = useState('');
+  const [contactName, setContactName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [volumes, setVolumes] = useState<Record<StreamKey, number>>({
     airtime: 5000,
     vouchers: 3000,
@@ -117,14 +119,18 @@ export default function Calculator() {
 
   const showResults = useCallback(() => { setPage('results'); window.scrollTo(0, 0); }, []);
   const showInputs = useCallback(() => { setPage('inputs'); window.scrollTo(0, 0); }, []);
+  const showSignup = useCallback(() => { setPage('signup'); window.scrollTo(0, 0); }, []);
 
   const handleSignup = async () => {
+    if (!contactName.trim() || !phoneNumber.trim()) return;
     setSignupStatus('loading');
     try {
       const res = await fetch('/api/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          contact_name: contactName,
+          phone_number: phoneNumber,
           shop_name: shopName,
           currency: currency.code,
           monthly_airtime: volumes.airtime,
@@ -371,19 +377,96 @@ export default function Calculator() {
             {/* CTAs */}
             <div className="cta-grid">
               <button className="btn-secondary" onClick={showInputs}>← Adjust numbers</button>
-              <button className="btn-primary" style={{ padding: '14px' }} onClick={handleSignup} disabled={signupStatus === 'loading'}>
-                {signupStatus === 'loading' ? 'Submitting...' : signupStatus === 'success' ? '✅ Submitted!' : 'Sign me up! 🚀'}
-              </button>
+              <button className="btn-primary" style={{ padding: '14px' }} onClick={showSignup}>Sign me up! 🚀</button>
             </div>
-            {signupStatus === 'success' && (
-              <div className="signup-toast success">🎉 Your details have been submitted! The Zeam team will be in touch.</div>
-            )}
-            {signupStatus === 'error' && (
-              <div className="signup-toast error">Something went wrong. Please try again.</div>
-            )}
             <div className="disclaimer">
               Estimates based on standard Zeam merchant commission rates (1.5% on all transactions, {sym}40 per sign-on).
               Actual earnings depend on transaction volumes and product availability in your area. · Zeam.money
+            </div>
+          </div>
+        )}
+
+        {/* ====== SIGNUP ====== */}
+        {page === 'signup' && (
+          <div className="page active animate-in">
+            <div className="results-intro">
+              <div className="sub">Almost there!</div>
+              <h2>Let&apos;s get you <span>started</span> with Zeam</h2>
+            </div>
+
+            {/* Earnings summary */}
+            <div className="total-card" style={{ marginBottom: '20px' }}>
+              <div className="total-label">Your Estimated Monthly Earnings</div>
+              <div className="total-amount">{fmt(calc.total, sym)}</div>
+              <div className="total-sub">{fmt(calc.annual, sym)} per year</div>
+            </div>
+
+            {/* Signup form */}
+            <div className="card">
+              <div className="card-header">
+                <div className="card-icon" style={{ background: `${Z.green}18` }}>📋</div>
+                <div>
+                  <div className="card-title">Your Details</div>
+                  <div className="card-sub">We&apos;ll be in touch to get you set up</div>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">Full Name *</label>
+                <input
+                  className="shop-input"
+                  type="text"
+                  placeholder="e.g. Grace Mokoena"
+                  value={contactName}
+                  onChange={(e) => setContactName(e.target.value)}
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">Phone Number *</label>
+                <input
+                  className="shop-input"
+                  type="tel"
+                  placeholder="e.g. 071 234 5678"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">Shop Name</label>
+                <input
+                  className="shop-input"
+                  type="text"
+                  placeholder="e.g. Mama Grace's Spaza"
+                  value={shopName}
+                  onChange={(e) => setShopName(e.target.value)}
+                />
+              </div>
+
+              <button
+                className="btn-primary signup-submit"
+                onClick={handleSignup}
+                disabled={signupStatus === 'loading' || !contactName.trim() || !phoneNumber.trim()}
+              >
+                {signupStatus === 'loading' ? 'Submitting...' : signupStatus === 'success' ? '✅ Submitted!' : 'Submit & Sign Me Up 🚀'}
+              </button>
+
+              {signupStatus === 'success' && (
+                <div className="signup-toast success">🎉 Your details have been submitted! The Zeam team will be in touch soon.</div>
+              )}
+              {signupStatus === 'error' && (
+                <div className="signup-toast error">Something went wrong. Please try again.</div>
+              )}
+            </div>
+
+            <div className="cta-grid" style={{ marginTop: '12px' }}>
+              <button className="btn-secondary" onClick={showResults}>← Back to results</button>
+              <button className="btn-secondary" onClick={showInputs}>← Adjust numbers</button>
+            </div>
+
+            <div className="disclaimer" style={{ marginTop: '12px' }}>
+              Your information is only used to contact you about becoming a Zeam merchant. · Zeam.money
             </div>
           </div>
         )}
