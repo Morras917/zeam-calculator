@@ -15,8 +15,8 @@ const Z = {
 };
 
 const RATES = {
-  commission: 0.015,
-  referralBonus: 40,
+  commission: 0.02,
+  referralBonus: 20,
   bonusTiers: [
     { min: 0, max: 50000, bonus: 0 },
     { min: 50001, max: 150000, bonus: 500 },
@@ -73,10 +73,10 @@ function Slider({
 
 // ── Revenue stream config ──
 const STREAMS = [
-  { key: 'airtime',    icon: '📱', title: 'Prepaid Airtime Sales',  sub: 'Earn 1.5% commission on every airtime top-up you sell',   color: Z.teal,   sliderLabel: 'Monthly airtime sold',      sliderSub: 'Total airtime top-up sales per month',         min: 0, max: 80000,  step: 500 },
-  { key: 'vouchers',   icon: '🎟️', title: 'ONE Voucher Sales',      sub: 'Earn 1.5% commission on every ONE voucher sold',          color: Z.green,  sliderLabel: 'Monthly voucher sales',     sliderSub: 'Total ONE voucher sales per month',            min: 0, max: 80000,  step: 500 },
-  { key: 'remittance', icon: '💸', title: 'Remittance Services',    sub: 'Earn 1.5% on every remittance you process for customers', color: Z.orange, sliderLabel: 'Monthly remittance volume', sliderSub: 'Total money sent on behalf of customers',      min: 0, max: 200000, step: 1000 },
-  { key: 'qr',         icon: '📲', title: 'QR Product Sales',       sub: 'Earn 1.5% on products sold from your shop via QR',        color: Z.gold,   sliderLabel: 'Monthly QR sales',          sliderSub: 'Products sold via Zeam QR payment',            min: 0, max: 200000, step: 1000 },
+  { key: 'airtime',    icon: '📱', title: 'Prepaid Airtime Sales',  sub: 'Earn 2% commission on every airtime top-up you sell',   color: Z.teal,   sliderLabel: 'Monthly airtime sold',      sliderSub: 'Total airtime top-up sales per month',         min: 0, max: 80000,  step: 500 },
+  { key: 'vouchers',   icon: '🎟️', title: 'ONE Voucher Sales',      sub: 'Earn 2% commission on every ONE voucher sold',          color: Z.green,  sliderLabel: 'Monthly voucher sales',     sliderSub: 'Total ONE voucher sales per month',            min: 0, max: 80000,  step: 500 },
+  { key: 'remittance', icon: '💸', title: 'Remittance Services',    sub: 'Earn 2% on every remittance you process for customers', color: Z.orange, sliderLabel: 'Monthly remittance volume', sliderSub: 'Total money sent on behalf of customers',      min: 0, max: 200000, step: 1000 },
+  { key: 'qr',         icon: '📲', title: 'QR Product Sales',       sub: 'Earn 2% on products sold from your shop via QR',        color: Z.gold,   sliderLabel: 'Monthly QR sales',          sliderSub: 'Products sold via Zeam QR payment',            min: 0, max: 200000, step: 1000 },
 ] as const;
 
 type StreamKey = typeof STREAMS[number]['key'];
@@ -213,7 +213,7 @@ export default function Calculator() {
                   onChange={(v) => setVolume(s.key, v)}
                 />
                 <div className="preview-box" style={{ background: `${s.color}10` }}>
-                  <div className="preview-label">Commission earned (1.5%)</div>
+                  <div className="preview-label">Commission earned (2%)</div>
                   <div className="preview-value" style={{ color: s.color }}>
                     {fmt(volumes[s.key] * RATES.commission, sym)}
                   </div>
@@ -227,7 +227,7 @@ export default function Calculator() {
                 <div className="card-icon" style={{ background: `${Z.green}18` }}>🤝</div>
                 <div>
                   <div className="card-title">Sign Up New Zeam Users</div>
-                  <div className="card-sub">Earn {sym}40 for every new customer you sign on to Zeam</div>
+                  <div className="card-sub">Earn {sym}20 for every new customer you sign on to Zeam</div>
                 </div>
               </div>
               <Slider label="New Zeam sign-ons per month" sublabel="Customers you introduce to Zeam" value={ref} min={0} max={100} step={1} display={`${ref} people`} color={Z.green} onChange={setRef} />
@@ -279,7 +279,7 @@ export default function Calculator() {
                 return (
                   <div className="bar-row" key={s.key}>
                     <div className="bar-top">
-                      <div className="bar-label">{s.icon} {s.title} (1.5%)</div>
+                      <div className="bar-label">{s.icon} {s.title} (2%)</div>
                       <div className="bar-amount" style={{ color: s.color }}>{fmt(comm.amount, sym)}</div>
                     </div>
                     <div className="bar-track">
@@ -290,7 +290,7 @@ export default function Calculator() {
               })}
               <div className="bar-row">
                 <div className="bar-top">
-                  <div className="bar-label">🤝 Sign-on bonuses ({ref} × {sym}40)</div>
+                  <div className="bar-label">🤝 Sign-on bonuses ({ref} × {sym}20)</div>
                   <div className="bar-amount" style={{ color: Z.green }}>{fmt(calc.refEarn, sym)}</div>
                 </div>
                 <div className="bar-track">
@@ -380,7 +380,7 @@ export default function Calculator() {
               <button className="btn-primary" style={{ padding: '14px' }} onClick={() => window.open('https://www.zeam.money/zeam-downloads', '_blank')}>Sign me up! 🚀</button>
             </div>
             <div className="disclaimer">
-              Estimates based on standard Zeam merchant commission rates (1.5% on all transactions, {sym}40 per sign-on).
+              Estimates based on standard Zeam merchant commission rates (2% on all transactions, {sym}20 per sign-on).
               Actual earnings depend on transaction volumes and product availability in your area. · Zeam.money
             </div>
           </div>
